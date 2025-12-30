@@ -305,7 +305,7 @@ PROJECT_KEY: "bookverse"
 DOCKER_REGISTRY: "apptrusttraining1.jfrog.io"
 
 # Evidence Configuration  
-EVIDENCE_KEY_ALIAS: "bookverse-evidence-key"
+EVIDENCE_KEY_ALIAS: "bookverse-signing-key"
 ```
 
 ### Required Repository Secrets

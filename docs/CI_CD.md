@@ -46,7 +46,7 @@ For detailed information, see our extensive documentation suite:
 PROJECT_KEY: "bookverse"
 JFROG_URL: "https://apptrusttraining1.jfrog.io"
 DOCKER_REGISTRY: "apptrusttraining1.jfrog.io"
-EVIDENCE_KEY_ALIAS: "bookverse-evidence-key"
+EVIDENCE_KEY_ALIAS: "bookverse-signing-key"
 
 # Repository Secrets
 EVIDENCE_PRIVATE_KEY: "[PEM formatted private key]"
