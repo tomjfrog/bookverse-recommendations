@@ -242,6 +242,8 @@ jobs:
       # algorithms, ML models, and associated artifacts to JFrog Platform
       - name: "[Setup] JFrog CLI"
         uses: jfrog/setup-jfrog-cli@v4
+        with:
+          version: 2.88.0
         id: jfrog-cli-auth
         with:
           oidc-provider-name: bookverse-recommendations-github  # ML service-specific OIDC provider
@@ -739,6 +741,8 @@ jobs:
 
       - name: "[Setup] JFrog CLI"
         uses: jfrog/setup-jfrog-cli@v4
+        with:
+          version: 2.88.0
         id: jfrog-cli-auth
         with:
           oidc-provider-name: bookverse-recommendations-github
