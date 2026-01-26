@@ -242,10 +242,9 @@ jobs:
       # algorithms, ML models, and associated artifacts to JFrog Platform
       - name: "[Setup] JFrog CLI"
         uses: jfrog/setup-jfrog-cli@v4
-        with:
-          version: 2.88.0
         id: jfrog-cli-auth
         with:
+          version: 2.88.0
           oidc-provider-name: bookverse-recommendations-github  # ML service-specific OIDC provider
           oidc-audience: ${{ vars.JFROG_URL }}                  # JFrog Platform audience validation
         env:
@@ -741,10 +740,9 @@ jobs:
 
       - name: "[Setup] JFrog CLI"
         uses: jfrog/setup-jfrog-cli@v4
-        with:
-          version: 2.88.0
         id: jfrog-cli-auth
         with:
+          version: 2.88.0
           oidc-provider-name: bookverse-recommendations-github
           oidc-audience: ${{ vars.JFROG_URL }}
         env:
