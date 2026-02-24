@@ -1,5 +1,10 @@
 FROM python:3.11-slim
 WORKDIR /app
+
+ARG BUILD_TS
+LABEL org.opencontainers.image.created=$BUILD_TS
+RUN echo "$BUILD_TS" > /app/build-timestamp.txt
+
 COPY requirements.txt .
 COPY libs libs
 RUN pip install --no-cache-dir ./libs/bookverse-core

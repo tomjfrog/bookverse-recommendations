@@ -468,7 +468,7 @@ jobs:
           export JF_PROJECT="${{ vars.PROJECT_KEY }}"
           export JFROG_CLI_BUILD_PROJECT="${{ vars.PROJECT_KEY }}"
 
-          REPO_KEY="${{ vars.PROJECT_KEY }}-$SERVICE_NAME-internal-docker-DEV-local"
+          REPO_KEY="${{ vars.PROJECT_KEY }}-$SERVICE_NAME-internal-docker-dev-local"
           IMAGE_NAME="${{ vars.DOCKER_REGISTRY }}/$REPO_KEY/$SERVICE_NAME:$RECOMMENDATIONS_VERSION"
           echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
           echo "Using recommendations package version: $RECOMMENDATIONS_VERSION"
@@ -502,6 +502,7 @@ jobs:
         env:
           EVIDENCE_PRIVATE_KEY: ${{ secrets.EVIDENCE_PRIVATE_KEY }}  # Cryptographic signing key
           EVIDENCE_KEY_ALIAS: ${{ vars.EVIDENCE_KEY_ALIAS }}        # Key identifier for audit trails
+          PACKAGE_REPO_STAGE_SUFFIX: dev
         run: |
           echo "🛡️ Generating evidence for API image package using shared library"
           echo "📦 Target Package: recommendations:$RECOMMENDATIONS_VERSION"
@@ -538,7 +539,7 @@ jobs:
           
           echo "Using recommendation-config package version: $CONFIG_VERSION"
           
-          GENERIC_REPO="${{ vars.PROJECT_KEY }}-$SERVICE_NAME-internal-generic-DEV-local"
+          GENERIC_REPO="${{ vars.PROJECT_KEY }}-$SERVICE_NAME-internal-generic-dev-local"
           jf rt upload "dist/config/recommendations-config-$CONFIG_VERSION.tar.gz" "$GENERIC_REPO/$SERVICE_NAME/config/$CONFIG_VERSION/recommendations-config-$CONFIG_VERSION.tar.gz" \
             --build-name "$BUILD_NAME" --build-number "$BUILD_NUMBER" --project "${{ vars.PROJECT_KEY }}"
           echo "✅ Recommendation config package uploaded with version $CONFIG_VERSION"
@@ -547,6 +548,7 @@ jobs:
         env:
           EVIDENCE_PRIVATE_KEY: ${{ secrets.EVIDENCE_PRIVATE_KEY }}
           EVIDENCE_KEY_ALIAS: ${{ vars.EVIDENCE_KEY_ALIAS }}
+          PACKAGE_REPO_STAGE_SUFFIX: dev
         run: |
           echo "📦 Generating evidence for config package using shared library"
           
@@ -572,7 +574,7 @@ jobs:
           
           echo "Using resources package version: $RESOURCES_VERSION"
           
-          GENERIC_REPO="${{ vars.PROJECT_KEY }}-$SERVICE_NAME-internal-generic-DEV-local"
+          GENERIC_REPO="${{ vars.PROJECT_KEY }}-$SERVICE_NAME-internal-generic-dev-local"
           jf rt upload "dist/resources/recommendations-resources-$RESOURCES_VERSION.tar.gz" "$GENERIC_REPO/$SERVICE_NAME/resources/$RESOURCES_VERSION/recommendations-resources-$RESOURCES_VERSION.tar.gz" \
             --build-name "$BUILD_NAME" --build-number "$BUILD_NUMBER" --project "${{ vars.PROJECT_KEY }}"
           echo "✅ Resources package uploaded with version $RESOURCES_VERSION"
@@ -581,6 +583,7 @@ jobs:
         env:
           EVIDENCE_PRIVATE_KEY: ${{ secrets.EVIDENCE_PRIVATE_KEY }}
           EVIDENCE_KEY_ALIAS: ${{ vars.EVIDENCE_KEY_ALIAS }}
+          PACKAGE_REPO_STAGE_SUFFIX: dev
         run: |
           echo "📚 Generating evidence for resources package"
           
@@ -611,7 +614,7 @@ jobs:
           echo "✅ Using individual package version for worker: $WORKER_TAG"
           echo "WORKER_TAG=$WORKER_TAG" >> $GITHUB_ENV
           
-          REPO_KEY="${{ vars.PROJECT_KEY }}-$SERVICE_NAME-internal-docker-DEV-local"
+          REPO_KEY="${{ vars.PROJECT_KEY }}-$SERVICE_NAME-internal-docker-dev-local"
           WORKER_IMAGE="${{ vars.DOCKER_REGISTRY }}/$REPO_KEY/$WORKER_NAME:$WORKER_TAG"
           echo "WORKER_IMAGE=$WORKER_IMAGE" >> $GITHUB_ENV
 
@@ -640,6 +643,7 @@ jobs:
         env:
           EVIDENCE_PRIVATE_KEY: ${{ secrets.EVIDENCE_PRIVATE_KEY }}
           EVIDENCE_KEY_ALIAS: ${{ vars.EVIDENCE_KEY_ALIAS }}
+          PACKAGE_REPO_STAGE_SUFFIX: dev
         run: |
           echo "🔧 Generating evidence for worker image package"
           
